@@ -1,0 +1,27 @@
+this.onStart(function() {
+    while (true) {
+        if (this.sensing.isMouseDown()) {
+            y = 30;
+            while (!this.sensing.isTouching("ground")) { 
+                y += -2;
+                this.motion.changeYBy(this.y);
+                this.motion.turnCW(18);
+                this.wait(0.02);
+            }
+            this.motion.pointDirection(90);
+            get_out_of_ground();
+        }
+    }
+});
+
+this.onStart(function() {
+    this.motion.moveTo(-389, -159);
+});
+
+function get_out_of_ground() {
+    while (this.sensing.isTouching("ground")) { 
+        this.motion.pointDirection(90);
+        this.motion.changeYBy(1);
+    }
+}
+
